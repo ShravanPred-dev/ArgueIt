@@ -1,0 +1,47 @@
+html {
+  scroll-behavior: smooth;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.toast {
+  @apply fixed top-0 left-0 right-0 m-auto text-center bg-custom-black text-white p-1.5 max-w-sm text-3xl rounded-xl hidden opacity-0 transition-all;
+}
+
+.toast--visible {
+  @apply top-5 opacity-80 visible;
+}
+
+.mode {
+  @apply text-5xl text-center shadow-2xl rounded-xl cursor-pointer transition duration-500 ease-in-out hover:bg-custom-blue transform hover:-translate-y-1 hover:scale-110 hover:text-white border-2 border-custom-blue outline-none focus:outline-none;
+}
+
+.icon {
+  @apply p-5;
+}
+
+.idea-card {
+  @apply w-64 h-64 rounded-lg shadow-2xl text-center text-2xl hover:bg-custom-green hover:text-white transition-all cursor-pointer;
+}
+
+.idea {
+  @apply align-middle text-center my-auto py-7 px-4;
+}
+
+.stat-card {
+  @apply w-80 h-80 rounded-lg shadow-2xl text-center text-xl hover:bg-custom-green hover:text-white transition-all cursor-pointer;
+}
+
+.stat {
+  @apply align-middle text-center my-auto py-16 px-4;
+}
+
+.text-card {
+  @apply max-w-2xl w-6/12 h-80 rounded-lg shadow-2xl text-center text-xl hover:bg-custom-green hover:text-white transition-all cursor-pointer;
+}
+
+.text {
+  @apply align-middle text-center my-auto py-16 px-4;
+}
