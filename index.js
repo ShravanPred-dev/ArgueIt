@@ -135,9 +135,6 @@ window.onload = function () {
   Argument: All drugs should be legalized
   Statistics: Portugal has found that, since decriminalisation, both addiction and substance misuse rates have gone down because people with substance issues are treated rather than jailed. The Government could bring in tax revenue from a legalised drugs market; it was reported in June 2019 that the US state of Colorado had passed $1 billion in state revenue from cannabis sales since legalising it in in 2014. The 2014 defelonization victory in CA substantially reduced the number of people in prison and especially local jails; those savings are now being reallocated to provide needed services. 
 
-  Argument: breakfast is the most important meal of the day
-  Statistics: A German study published in The Journal of Clinical Endocrinology & Metabolism indicated that you can burn about twice as many calories per day if you eat breakfast because your body's absorption of carbohydrates, fats, and proteins might be faster in the morning. A study from the Cleveland Clinic showed that teenagers between ages 16 and 18 who ate breakfast before school got better grades than students who tended to skip breakfast. A study from the Journal of Strength & Conditioning found that skipping breakfast may hinder your progress in the gym especially when it comes to lifting weights.
-
   Argument:`;
 
   function statMode() {
