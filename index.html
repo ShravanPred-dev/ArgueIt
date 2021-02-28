@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/bundle.js"></script>
+    <title>¡Argue It!</title>
+  </head>
+  <body class="bg-white">
+    <!-- content wrapper -->
+    <div>
+      <!-- nav -->
+      <nav class="text-center">
+        <!-- Nav w/ gradient text -->
+        <h1
+          class="text-custom-black text-8xl font-semibold my-10 hover:opacity-70 cursor-pointer transition-all"
+        >
+          <a href="/">¡Argue It!</a>
+        </h1>
+        <h1 class="text-5xl font-black text-white text-center">
+          <span
+            class="bg-gradient-to-r text-transparent bg-clip-text from-purple-400 to-pink-500"
+          >
+            Kickstart your Research
+          </span>
+        </h1>
+      </nav>
+
+      <!-- input field + modes + button -->
+
+      <!-- div for input and search -->
+      <div class="relative mx-auto mt-32">
+        <div class="text-center">
+          <input id="input"
+            type="text"
+            placeholder="Argue that.."
+            autocomplete="off"
+            class="text-custom-black outline-none text-left w-3/6 px-12 p-5 rounded-lg text-2xl bg-white shadow-xl focus:shadow-2xl transition-all border-2 border-opacity-5 border-gray-300 focus:border-opacity-0"
+          />
+          <!-- search button -->
+          <button onclick="window.handleSearch()" class="text-3xl absolute top-0 left-0 cursor-pointer outline-none focus:outline-none mt-6 ml-80"><ion-icon
+            name="arrow-forward-outline"
+          ></ion-icon></button>
+        </div>
+      </div>
+      <!-- random phrase -->
+      <div class="text-center py-7 text-xl select-none">
+        Not sure? Try a
+        <span id="random-topic" class="text-custom-green cursor-pointer">random topic</span>
+      </div>
+      <!-- 3 mode buttons w/ blue design -->
+      <div class="container flex justify-evenly mx-auto mt-20 mb-20">
+        <button id="idea-mode" onclick="handleModeSelect('idea')" class="mode"><ion-icon name="bulb-outline" class="icon"></ion-icon></ion-icon></button>
+        <button id="stat-mode" onclick="handleModeSelect('stat')" class="mode"><ion-icon name="stats-chart-outline" class="icon"></ion-icon></button>
+        <button id="text-mode" onclick="handleModeSelect('text')" class="mode"><ion-icon name="reader-outline" class="icon"></ion-icon></button>
+      </div>
+      <div class="text-center mt-28">
+        <button onclick="window.handleSearch()"
+        class="transition duration-500 ease-in-out bg-custom-black hover:bg-custom-red transform hover:-translate-y-1 hover:scale-110 text-white font-black px-5 py-3 rounded-lg text-2xl outline-none focus:outline-none"
+        >
+          Generate
+        </button>
+      </div>
+
+      <!-- response div -->
+      <div id="response" class="flex my-20 justify-evenly text-center"></div>
+    </div>
+    <!-- ion icons -->
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  </body>
+  <script>
+    // mode select functionality
+    function handleModeSelect(mode) {
+      const ideaMode = document.getElementById("idea-mode");
+      const statMode = document.getElementById("stat-mode");
+      const textMode = document.getElementById("text-mode");
+
+      // additional "selected" class will be checked for in JS file
+      const classes = ["bg-custom-blue", "text-white", "opacity-80", "selected"];
+
+      // add TailwindCSS classes for styling
+      if(mode=="idea") {
+        for(var i=0; i<classes.length; i++) {
+          ideaMode.classList.add(classes[i]);
+          statMode.classList.remove(classes[i]);
+          textMode.classList.remove(classes[i]);
+        }
+      }
+      else if(mode=="stat") {
+        for(var i=0; i<classes.length; i++) {
+          ideaMode.classList.remove(classes[i]);
+          statMode.classList.add(classes[i]);
+          textMode.classList.remove(classes[i]);
+        }
+      }
+      else {
+        for(var i=0; i<classes.length; i++) {
+          ideaMode.classList.remove(classes[i]);
+          statMode.classList.remove(classes[i]);
+          textMode.classList.add(classes[i]);
+        }
+      }
+    }
+
+    const Toast = {
+        // initializes the Toast notification as invisible
+        init() {
+          this.hideTimeout = null;
+          this.el = document.createElement("div");
+          this.el.className = "toast";
+          document.body.appendChild(this.el);
+        },
+
+        // makes Toast noti visible and sets time it is opaque
+        show() {
+          clearTimeout(this.hideTimeout);
+          this.el.textContent = "Copied.";
+          this.el.className = "toast toast--visible";
+          this.hideTimeout = setTimeout(() => {
+            this.el.classList.remove("toast--visible");
+          }, 1000);
+        },
+      };
+      // calling function to initialize Toast noti
+      Toast.init();
+
+      // function to copy alternative to clipboard
+      function copy(str) {
+        // creating temporary textarea to hold alternative in 'value' property
+        const el = document.createElement("textarea");
+        el.value = str;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand("copy");
+        // removing the temp textarea
+        document.body.removeChild(el);
+        // calling function to make Toast noti visible
+        Toast.show();
+      }
+  </script>
+</html>
